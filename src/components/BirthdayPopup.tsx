@@ -8,10 +8,10 @@ export const BirthdayPopup = () => {
   const [confetti, setConfetti] = useState<Array<{ id: number; color: string; delay: number }>>([]);
 
   useEffect(() => {
-    // Generate confetti pieces
+    // Generate confetti pieces with cosmic colors
     const pieces = Array.from({ length: 50 }, (_, i) => ({
       id: i,
-      color: ['hsl(330, 70%, 65%)', 'hsl(270, 60%, 80%)', 'hsl(350, 100%, 88%)', 'hsl(280, 70%, 75%)'][i % 4],
+      color: ['hsl(258, 92%, 76%)', 'hsl(330, 81%, 60%)', 'hsl(277, 87%, 76%)', 'hsl(330, 85%, 70%)'][i % 4],
       delay: Math.random() * 2,
     }));
     setConfetti(pieces);
@@ -41,7 +41,7 @@ export const BirthdayPopup = () => {
 
       {/* Popup */}
       <div className="fixed inset-0 z-[52] flex items-center justify-center p-4">
-        <div className="relative bg-card rounded-3xl shadow-[var(--shadow-romantic)] p-8 md:p-12 max-w-2xl w-full animate-fade-in border-2 border-primary/20">
+        <div className="relative bg-card rounded-3xl shadow-[var(--shadow-cosmic)] p-8 md:p-12 max-w-2xl w-full animate-popup-enter border-2 border-primary/40">
           {/* Close Button */}
           <Button
             variant="ghost"
@@ -55,22 +55,22 @@ export const BirthdayPopup = () => {
           {/* Content */}
           <div className="text-center space-y-6">
             <div className="space-y-2">
-              <h1 className="font-cursive text-5xl md:text-7xl text-primary animate-glow">
+              <h1 className="font-cursive text-5xl md:text-7xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
                 Happiest 24th,
               </h1>
-              <h2 className="font-cursive text-6xl md:text-8xl text-primary animate-glow">
+              <h2 className="font-cursive text-6xl md:text-8xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
                 Babi! 💕
               </h2>
             </div>
             
-            <p className="font-serif text-lg md:text-xl text-foreground/80">
+            <p className="font-serif text-lg md:text-xl text-foreground">
               Welcome to your special day, filled with love, memories, and endless surprises
             </p>
 
             <div className="flex gap-4 justify-center pt-4">
               <Button
                 onClick={() => setIsOpen(false)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-serif text-lg px-8 py-6 rounded-full shadow-[var(--shadow-romantic)]"
+                className="bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] hover:opacity-90 text-white font-serif text-lg px-8 py-6 rounded-full shadow-[var(--shadow-cosmic)]"
               >
                 Let's Celebrate! 🎉
               </Button>
@@ -90,9 +90,9 @@ export const BirthdayPopup = () => {
         variant="outline"
         size="icon"
         onClick={() => setIsMuted(!isMuted)}
-        className="fixed bottom-6 right-6 z-[53] rounded-full w-14 h-14 bg-card hover:bg-primary/10 border-2 border-primary/30 shadow-[var(--shadow-soft)]"
+        className="fixed bottom-6 right-6 z-[53] rounded-full w-14 h-14 bg-card hover:bg-primary/20 border-2 border-primary/50 shadow-[var(--shadow-soft)]"
       >
-        {isMuted ? <VolumeX className="h-6 w-6" /> : <Volume2 className="h-6 w-6" />}
+        {isMuted ? <VolumeX className="h-6 w-6 text-foreground" /> : <Volume2 className="h-6 w-6 text-foreground" />}
       </Button>
     </>
   );

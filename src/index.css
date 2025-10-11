@@ -8,83 +8,70 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 350 100% 98%;
-    --foreground: 340 50% 20%;
+    /* Deep cosmic backgrounds */
+    --background: 255 64% 11%; /* #0f0c29 Deep Midnight Blue */
+    --background-accent: 253 41% 28%; /* #302b63 Rich Purple */
+    --background-mid: 240 25% 19%; /* #24243e Dark Slate */
+    
+    --foreground: 230 100% 90%; /* #c7d2fe Periwinkle Blue */
 
-    --card: 0 0% 100%;
-    --card-foreground: 340 50% 20%;
+    --card: 253 41% 28%;
+    --card-foreground: 230 100% 90%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 340 50% 20%;
+    --popover: 253 41% 28%;
+    --popover-foreground: 230 100% 90%;
 
-    --primary: 330 70% 65%;
+    /* Vibrant accents */
+    --primary: 258 90% 66%; /* #8b5cf6 Vibrant Purple */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 60% 80%;
-    --secondary-foreground: 340 50% 20%;
+    --secondary: 330 81% 60%; /* #ec4899 Hot Pink */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 320 30% 95%;
-    --muted-foreground: 340 30% 50%;
+    --muted: 240 25% 19%;
+    --muted-foreground: 230 100% 90%;
 
-    --accent: 280 70% 75%;
-    --accent-foreground: 340 50% 20%;
+    --accent: 258 92% 76%; /* #a78bfa Soft Lavender */
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 320 40% 90%;
-    --input: 320 40% 90%;
-    --ring: 330 70% 65%;
+    --border: 258 90% 66% / 0.3;
+    --input: 253 41% 28%;
+    --ring: 258 90% 66%;
 
     --radius: 1rem;
 
-    /* Custom romantic colors */
-    --romantic-pink: 350 100% 88%;
-    --romantic-lavender: 270 60% 85%;
-    --romantic-peach: 20 100% 90%;
-    --romantic-cream: 40 30% 95%;
-    --romantic-rose: 330 70% 65%;
-    --romantic-purple: 280 50% 60%;
+    /* Custom cosmic colors */
+    --vibrant-purple: 258 90% 66%; /* #8b5cf6 */
+    --hot-pink: 330 81% 60%; /* #ec4899 */
+    --soft-lavender: 258 92% 76%; /* #a78bfa */
+    --light-violet: 277 87% 76%; /* #c084fc */
+    --baby-pink: 330 85% 70%; /* #f472b6 */
+    --periwinkle: 230 100% 90%; /* #c7d2fe */
 
     /* Gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(350 100% 88%), hsl(270 60% 85%));
-    --gradient-glow: linear-gradient(180deg, hsl(350 100% 95%), hsl(270 60% 90%));
-    --gradient-soft: linear-gradient(to right, hsl(350 100% 92%), hsl(280 60% 88%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(255 64% 11%), hsl(253 41% 28%), hsl(240 25% 19%));
+    --gradient-purple-pink: linear-gradient(135deg, hsl(258 90% 66%), hsl(330 81% 60%));
+    --gradient-lavender-pink: linear-gradient(135deg, hsl(258 92% 76%), hsl(330 81% 60%));
+    --gradient-three-tone: linear-gradient(135deg, hsl(258 92% 76%), hsl(330 81% 60%), hsl(258 90% 66%));
+    --gradient-animated: linear-gradient(135deg, hsl(255 64% 11%), hsl(253 41% 28%), hsl(240 25% 19%), hsl(253 41% 28%));
 
-    /* Shadows */
-    --shadow-romantic: 0 10px 40px -10px hsl(330 70% 65% / 0.3);
-    --shadow-soft: 0 4px 20px hsl(330 50% 80% / 0.2);
-    --glow-romantic: 0 0 30px hsl(330 70% 65% / 0.4);
+    /* Shadows & Glows */
+    --shadow-cosmic: 0 10px 40px -10px hsl(258 90% 66% / 0.5);
+    --shadow-soft: 0 4px 20px hsl(330 81% 60% / 0.3);
+    --glow-purple: 0 0 30px hsl(258 90% 66% / 0.6);
+    --glow-pink: 0 0 30px hsl(330 81% 60% / 0.6);
+    --glow-pulse: drop-shadow(0 0 10px hsl(258 90% 66% / 0.8));
   }
+}
 
-  .dark {
-    --background: 340 40% 10%;
-    --foreground: 350 100% 95%;
-
-    --card: 340 35% 15%;
-    --card-foreground: 350 100% 95%;
-
-    --popover: 340 35% 15%;
-    --popover-foreground: 350 100% 95%;
-
-    --primary: 330 70% 65%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 270 40% 30%;
-    --secondary-foreground: 350 100% 95%;
-
-    --muted: 340 30% 25%;
-    --muted-foreground: 320 20% 70%;
-
-    --accent: 280 50% 50%;
-    --accent-foreground: 350 100% 95%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 350 100% 95%;
-
-    --border: 340 30% 25%;
-    --input: 340 30% 25%;
-    --ring: 330 70% 65%;
+@layer base {
+  body {
+    background: linear-gradient(135deg, hsl(255 64% 11%), hsl(253 41% 28%), hsl(240 25% 19%), hsl(253 41% 28%));
+    background-size: 400% 400%;
+    animation: cosmic-shift 15s ease infinite;
   }
 }
 

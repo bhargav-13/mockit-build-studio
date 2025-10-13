@@ -21,7 +21,7 @@ export const Navigation = () => {
     <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border shadow-[var(--shadow-soft)]">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="font-cursive text-2xl text-primary hover:scale-105 transition-transform">
+          <Link to="/" className="font-cursive text-2xl text-primary hover:scale-105 transition-transform no-underline">
             Aadi's 24th 💕
           </Link>
           
@@ -35,7 +35,7 @@ export const Navigation = () => {
                   key={item.to}
                   to={item.to}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-full font-serif transition-all",
+                    "flex items-center gap-2 px-4 py-2 rounded-full font-serif transition-all no-underline",
                     isActive
                       ? "bg-primary text-primary-foreground shadow-[var(--shadow-romantic)]"
                       : "hover:bg-muted text-foreground/70 hover:text-foreground"
@@ -50,7 +50,7 @@ export const Navigation = () => {
 
           {/* Mobile menu - simplified for now */}
           <div className="md:hidden">
-            <Link to="/" className="text-primary">
+            <Link to="/" className="text-primary no-underline">
               <Home className="h-6 w-6" />
             </Link>
           </div>

@@ -61,6 +61,7 @@ All colors MUST be HSL.
     /* Shadows & Glows */
     --shadow-cosmic: 0 10px 40px -10px hsl(258 90% 66% / 0.5);
     --shadow-soft: 0 4px 20px hsl(330 81% 60% / 0.3);
+    --shadow-romantic: 0 8px 30px hsl(330 81% 60% / 0.4);
     --glow-purple: 0 0 30px hsl(258 90% 66% / 0.6);
     --glow-pink: 0 0 30px hsl(330 81% 60% / 0.6);
     --glow-pulse: drop-shadow(0 0 10px hsl(258 90% 66% / 0.8));
@@ -70,6 +71,10 @@ All colors MUST be HSL.
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -82,5 +87,52 @@ All colors MUST be HSL.
   
   html, body, #root {
     min-height: 100vh;
+  }
+
+  /* Magical link hover effects */
+  a {
+    @apply relative transition-all duration-300;
+  }
+
+  a:not(.no-underline)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--vibrant-purple)), hsl(var(--hot-pink)));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  a:not(.no-underline):hover::after {
+    transform: scaleX(1);
+  }
+
+  a:hover {
+    color: hsl(var(--hot-pink));
+    transform: translateY(-2px);
+  }
+
+  /* Sparkle cursor effect */
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 20px;
+    z-index: 9999;
+    animation: sparkle-fall 1s ease-out forwards;
+  }
+
+  @keyframes sparkle-fall {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.5);
+    }
   }
 }

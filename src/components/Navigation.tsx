@@ -18,7 +18,7 @@ export const Navigation = () => {
   const location = useLocation();
 
   return (
-    <nav className="sticky top-0 z-40 bg-card/80 backdrop-blur-lg border-b border-border shadow-[var(--shadow-soft)]">
+    <nav className="sticky top-0 z-40 glass border-b border-primary/20 shadow-[var(--shadow-soft)]">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="font-cursive text-2xl text-primary hover:scale-105 transition-transform no-underline">

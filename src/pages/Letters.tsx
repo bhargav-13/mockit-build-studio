@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Plus, Mail } from 'lucide-react';
+import { useDataPersistence } from '@/hooks/useDataPersistence';
 
 interface Letter {
   id: number;
@@ -14,21 +15,23 @@ interface Letter {
   date: string;
 }
 
+const defaultLetters: Letter[] = [
+  {
+    id: 1,
+    title: 'To My Dearest Aadi',
+    content: 'Every moment with you feels like a dream come true. You make my world brighter, my days happier, and my heart fuller. Thank you for being you. 💕',
+    date: 'Always',
+  },
+  {
+    id: 2,
+    title: 'Our First Adventure',
+    content: 'I still remember the first time we explored together. Your laugh, your smile, the way you made everything feel magical - those memories are treasures I hold close to my heart.',
+    date: 'Forever Remembered',
+  },
+];
+
 const Letters = () => {
-  const [letters, setLetters] = useState<Letter[]>([
-    {
-      id: 1,
-      title: 'To My Dearest Aadi',
-      content: 'Every moment with you feels like a dream come true. You make my world brighter, my days happier, and my heart fuller. Thank you for being you. 💕',
-      date: 'Always',
-    },
-    {
-      id: 2,
-      title: 'Our First Adventure',
-      content: 'I still remember the first time we explored together. Your laugh, your smile, the way you made everything feel magical - those memories are treasures I hold close to my heart.',
-      date: 'Forever Remembered',
-    },
-  ]);
+  const { data: letters, updateData: setLetters, isLoading } = useDataPersistence<Letter[]>('aadi-letters', defaultLetters);
   
   const [selectedLetter, setSelectedLetter] = useState<number | null>(null);
   const [isAddingLetter, setIsAddingLetter] = useState(false);
@@ -38,7 +41,7 @@ const Letters = () => {
   const handleAddLetter = () => {
     if (newTitle.trim() && newContent.trim()) {
       const newLetter: Letter = {
-        id: letters.length + 1,
+        id: Math.max(...letters.map(l => l.id), 0) + 1,
         title: newTitle,
         content: newContent,
         date: new Date().toLocaleDateString(),
@@ -77,7 +80,13 @@ const Letters = () => {
 
         {/* Letters Grid */}
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {letters.map((letter, index) => (
+          {isLoading ? (
+            <div className="col-span-2 text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="font-serif text-muted-foreground">Loading letters...</p>
+            </div>
+          ) : (
+            letters.map((letter, index) => (
             <div
               key={letter.id}
               onClick={() => setSelectedLetter(letter.id)}
@@ -105,7 +114,8 @@ const Letters = () => {
                 </div>
               </div>
             </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* Read Letter Dialog */}

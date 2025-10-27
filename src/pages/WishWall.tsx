@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { Plus, Sparkles } from 'lucide-react';
+import { useDataPersistence } from '@/hooks/useDataPersistence';
 
 interface Wish {
   id: number;
@@ -14,12 +15,14 @@ interface Wish {
   color: string;
 }
 
+const defaultWishes: Wish[] = [
+  { id: 1, name: 'Your Biggest Fan', message: 'Happy Birthday Aadi! May this year bring you endless joy! 🎉', color: 'from-pink-300 to-rose-400' },
+  { id: 2, name: 'Forever Yours', message: 'To the most amazing person - you deserve all the happiness in the world! 💕', color: 'from-purple-300 to-pink-400' },
+  { id: 3, name: 'With Love', message: 'Celebrating you today and always. You make life beautiful! ✨', color: 'from-rose-300 to-pink-300' },
+];
+
 const WishWall = () => {
-  const [wishes, setWishes] = useState<Wish[]>([
-    { id: 1, name: 'Your Biggest Fan', message: 'Happy Birthday Aadi! May this year bring you endless joy! 🎉', color: 'from-pink-300 to-rose-400' },
-    { id: 2, name: 'Forever Yours', message: 'To the most amazing person - you deserve all the happiness in the world! 💕', color: 'from-purple-300 to-pink-400' },
-    { id: 3, name: 'With Love', message: 'Celebrating you today and always. You make life beautiful! ✨', color: 'from-rose-300 to-pink-300' },
-  ]);
+  const { data: wishes, updateData: setWishes, isLoading } = useDataPersistence<Wish[]>('aadi-wishes', defaultWishes);
 
   const [isAddingWish, setIsAddingWish] = useState(false);
   const [newName, setNewName] = useState('');
@@ -36,7 +39,7 @@ const WishWall = () => {
   const handleAddWish = () => {
     if (newName.trim() && newMessage.trim()) {
       const newWish: Wish = {
-        id: wishes.length + 1,
+        id: Math.max(...wishes.map(w => w.id), 0) + 1,
         name: newName,
         message: newMessage,
         color: colors[Math.floor(Math.random() * colors.length)],
@@ -76,7 +79,13 @@ const WishWall = () => {
         {/* Wish Wall */}
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {wishes.map((wish, index) => (
+            {isLoading ? (
+              <div className="col-span-3 text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                <p className="font-serif text-muted-foreground">Loading wishes...</p>
+              </div>
+            ) : (
+              wishes.map((wish, index) => (
               <div
                 key={wish.id}
                 className="animate-fade-in"
@@ -98,7 +107,8 @@ const WishWall = () => {
                   </div>
                 </div>
               </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
 

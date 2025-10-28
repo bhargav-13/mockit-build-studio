@@ -19,10 +19,12 @@ const AboutUs = () => {
       
       <main className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-16 animate-slide-up">
-          <h1 className="font-cursive text-6xl md:text-7xl text-primary mb-4">
+          {/* Main Title - The Seasons */}
+          <h1 className="font-seasons text-6xl md:text-7xl text-primary mb-4">
             The Story of Us 💕
           </h1>
-          <p className="font-serif text-xl text-muted-foreground">
+          {/* Subtitle - CMU Serif */}
+          <p className="font-cmu text-xl text-muted-foreground">
             A beautiful journey of love, laughter, and endless memories
           </p>
         </div>
@@ -36,14 +38,16 @@ const AboutUs = () => {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-3xl">
                   ✨
                 </div>
-                <h2 className="font-cursive text-4xl text-primary">How It All Began</h2>
+                {/* Section Title - Catchy Mager */}
+                <h2 className="font-catchy text-4xl text-primary">How It All Began</h2>
               </div>
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed mb-4">
+              {/* Content - CMU Serif */}
+              <p className="font-cmu text-lg text-foreground/80 leading-relaxed mb-4">
                 Some people come into our lives and leave footprints on our hearts. You didn't just leave 
                 footprints - you painted my entire world in colors I never knew existed. From the moment 
                 our paths crossed, I knew something special was beginning.
               </p>
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
+              <p className="font-cmu text-lg text-foreground/80 leading-relaxed">
                 What started as simple conversations turned into endless talks, shared dreams, and a 
                 connection that grew stronger with each passing day. You became my best friend, my confidant, 
                 and the person who makes every day worth celebrating.
@@ -58,14 +62,16 @@ const AboutUs = () => {
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-3xl">
                   💫
                 </div>
-                <h2 className="font-cursive text-4xl text-primary">Adventures Together</h2>
+                {/* Section Title - Catchy Mager */}
+                <h2 className="font-catchy text-4xl text-primary">Adventures Together</h2>
               </div>
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed mb-4">
+              {/* Content - CMU Serif */}
+              <p className="font-cmu text-lg text-foreground/80 leading-relaxed mb-4">
                 From spontaneous trips to planned adventures, every journey with you has been extraordinary. 
                 Whether we're exploring new cities, trying new foods, or simply walking hand in hand, 
                 you make every experience unforgettable.
               </p>
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed">
+              <p className="font-cmu text-lg text-foreground/80 leading-relaxed">
                 The memories we've created - from flying kites in Uttarayan to dancing on Goa beaches - 
                 are treasures I'll cherish forever. With you, even the simplest moments become beautiful stories.
               </p>
@@ -75,10 +81,12 @@ const AboutUs = () => {
           {/* Little Things I Love */}
           <section className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <div className="text-center mb-8">
-              <h2 className="font-cursive text-5xl text-primary mb-3">
+              {/* Section Title - Catchy Mager */}
+              <h2 className="font-catchy text-5xl text-primary mb-3">
                 Little Things I Love About You
               </h2>
-              <p className="font-serif text-lg text-muted-foreground">
+              {/* Subtitle - CMU Serif */}
+              <p className="font-cmu text-lg text-muted-foreground">
                 It's the small things that make you extraordinary
               </p>
             </div>
@@ -96,7 +104,8 @@ const AboutUs = () => {
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0">
                         <Icon className="h-6 w-6 text-white" />
                       </div>
-                      <p className="font-serif text-lg text-foreground/80 pt-2">
+                      {/* Text - CMU Serif */}
+                      <p className="font-cmu text-lg text-foreground/80 pt-2">
                         {reason.text}
                       </p>
                     </div>
@@ -110,10 +119,12 @@ const AboutUs = () => {
           <section className="animate-slide-up" style={{ animationDelay: '0.6s' }}>
             <div className="bg-[var(--gradient-romantic)] rounded-3xl p-12 text-center">
               <div className="text-6xl mb-6 animate-float">💖</div>
-              <blockquote className="font-cursive text-3xl md:text-4xl text-primary mb-6 leading-relaxed">
+              {/* Quote - Catchy Mager */}
+              <blockquote className="font-catchy text-3xl md:text-4xl text-primary mb-6 leading-relaxed">
                 "In a world full of temporary things, you are my forever constant"
               </blockquote>
-              <p className="font-serif text-xl text-foreground/80">
+              {/* Subtitle - CMU Serif */}
+              <p className="font-cmu text-xl text-foreground/80">
                 Here's to us, to our love, and to all the beautiful chapters yet to be written.
               </p>
             </div>
@@ -122,10 +133,12 @@ const AboutUs = () => {
           {/* Looking Forward */}
           <section className="animate-slide-up" style={{ animationDelay: '0.8s' }}>
             <div className="bg-card rounded-3xl p-8 md:p-12 shadow-[var(--shadow-romantic)] border border-border/50 text-center">
-              <h2 className="font-cursive text-4xl text-primary mb-6">
+              {/* Section Title - Catchy Mager */}
+              <h2 className="font-catchy text-4xl text-primary mb-6">
                 Looking Forward to Forever
               </h2>
-              <p className="font-serif text-lg text-foreground/80 leading-relaxed max-w-2xl mx-auto">
+              {/* Content - CMU Serif */}
+              <p className="font-cmu text-lg text-foreground/80 leading-relaxed max-w-2xl mx-auto">
                 As we celebrate your 24th birthday today, I'm filled with excitement for all the 
                 adventures, memories, and moments we'll share in the years to come. Every day with 
                 you is a gift, and I can't wait to see what our story holds next.

@@ -1,6 +1,6 @@
 import { Navigation } from '@/components/Navigation';
 import { FloatingHearts } from '@/components/FloatingHearts';
-import { MapPin, Calendar, Heart } from 'lucide-react';
+import { Calendar, Heart } from 'lucide-react';
 
 interface Milestone {
   id: number;
@@ -63,10 +63,12 @@ const Timeline = () => {
       
       <main className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-16 animate-slide-up">
-          <h1 className="font-cursive text-6xl md:text-7xl text-primary mb-4">
+          {/* Main Title - The Seasons */}
+          <h1 className="font-seasons text-6xl md:text-7xl text-primary mb-4">
             Our Journey So Far 📅
           </h1>
-          <p className="font-serif text-xl text-muted-foreground">
+          {/* Subtitle - CMU Serif */}
+          <p className="font-cmu text-xl text-muted-foreground">
             Every step of the way, hand in hand, heart to heart
           </p>
         </div>
@@ -96,12 +98,15 @@ const Timeline = () => {
                   <div className="bg-card rounded-3xl p-6 md:p-8 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-romantic)] transition-all duration-300 border border-border/50">
                     <div className="flex items-center gap-2 mb-3 text-primary">
                       <Calendar className="h-5 w-5" />
-                      <span className="font-serif text-sm">{milestone.date}</span>
+                      {/* Date - CMU Serif */}
+                      <span className="font-cmu text-sm">{milestone.date}</span>
                     </div>
-                    <h3 className="font-cursive text-3xl md:text-4xl text-primary mb-3">
+                    {/* Milestone Title - Catchy Mager */}
+                    <h3 className="font-catchy text-3xl md:text-4xl text-primary mb-3">
                       {milestone.title}
                     </h3>
-                    <p className="font-serif text-lg text-foreground/80 leading-relaxed">
+                    {/* Description - CMU Serif */}
+                    <p className="font-cmu text-lg text-foreground/80 leading-relaxed">
                       {milestone.description}
                     </p>
                   </div>
@@ -114,10 +119,12 @@ const Timeline = () => {
           <div className="relative text-center mt-20 animate-fade-in">
             <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-12 border-2 border-primary/20">
               <Heart className="h-16 w-16 text-primary mx-auto mb-6 animate-float" />
-              <p className="font-cursive text-4xl md:text-5xl text-primary mb-4">
+              {/* Quote - Catchy Mager */}
+              <p className="font-catchy text-4xl md:text-5xl text-primary mb-4">
                 And this is only the beginning...
               </p>
-              <p className="font-serif text-xl text-foreground/80">
+              {/* Subtitle - CMU Serif */}
+              <p className="font-cmu text-xl text-foreground/80">
                 Here's to countless more adventures, memories, and moments together 💕
               </p>
             </div>

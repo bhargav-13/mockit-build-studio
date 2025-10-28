@@ -55,22 +55,22 @@ export const BirthdayPopup = () => {
           {/* Content */}
           <div className="text-center space-y-6">
             <div className="space-y-2">
-              <h1 className="font-cursive text-5xl md:text-7xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
+              <h1 className="font-seasons text-5xl md:text-7xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
                 Happiest 24th,
               </h1>
-              <h2 className="font-cursive text-6xl md:text-8xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
+              <h2 className="font-seasons text-6xl md:text-8xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
                 Babi! 💕
               </h2>
             </div>
             
-            <p className="font-serif text-lg md:text-xl text-foreground">
+            <p className="font-cmu text-lg md:text-xl text-foreground">
               Welcome to your special day, filled with love, memories, and endless surprises
             </p>
 
             <div className="flex gap-4 justify-center pt-4">
               <Button
                 onClick={() => setIsOpen(false)}
-                className="bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] hover:opacity-90 text-white font-serif text-lg px-8 py-6 rounded-full shadow-[var(--shadow-cosmic)]"
+                className="bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] hover:opacity-90 text-white font-catchy text-lg px-8 py-6 rounded-full shadow-[var(--shadow-cosmic)]"
               >
                 Let's Celebrate! 🎉
               </Button>

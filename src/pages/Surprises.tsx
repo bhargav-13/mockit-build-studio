@@ -3,7 +3,7 @@ import { Navigation } from '@/components/Navigation';
 import { FloatingHearts } from '@/components/FloatingHearts';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Lock, Unlock, Gift, Heart, Star, Sparkles } from 'lucide-react';
+import { Lock, Heart, Star, Sparkles } from 'lucide-react';
 
 interface Surprise {
   id: number;
@@ -15,7 +15,7 @@ interface Surprise {
 }
 
 const Surprises = () => {
-  const [surprises, setSurprises] = useState<Surprise[]>([
+  const [surprises] = useState<Surprise[]>([
     {
       id: 1,
       title: 'Sweet Memory',
@@ -37,7 +37,7 @@ const Surprises = () => {
       title: 'Hidden Wish',
       locked: true,
       content: 'This surprise will unlock on your next special milestone... Stay tuned! 🎁',
-      icon: Gift,
+      icon: Lock,
       gradient: 'from-rose-400 to-pink-300',
     },
     {
@@ -82,10 +82,12 @@ const Surprises = () => {
       
       <main className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-slide-up">
-          <h1 className="font-cursive text-6xl md:text-7xl text-primary mb-4">
+          {/* Main Title - The Seasons */}
+          <h1 className="font-seasons text-6xl md:text-7xl text-primary mb-4">
             Unlock the Magic 🎁
           </h1>
-          <p className="font-serif text-xl text-muted-foreground">
+          {/* Subtitle - CMU Serif */}
+          <p className="font-cmu text-xl text-muted-foreground">
             Special surprises and secrets just for you
           </p>
         </div>
@@ -115,13 +117,13 @@ const Surprises = () => {
                     <Icon className="h-10 w-10 text-white" />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="font-cursive text-3xl text-white mb-4 text-center">
+                  {/* Title - Catchy Mager */}
+                  <h3 className="font-catchy text-3xl text-white mb-4 text-center">
                     {surprise.title}
                   </h3>
 
-                  {/* Preview */}
-                  <p className="text-white/90 text-center font-serif">
+                  {/* Preview - CMU Serif */}
+                  <p className="text-white/90 text-center font-cmu">
                     {surprise.locked ? 'Click to try unlocking...' : 'Click to reveal! ✨'}
                   </p>
                 </div>
@@ -138,11 +140,13 @@ const Surprises = () => {
                 <div className="text-6xl mb-4 animate-float">
                   {surprises.find(s => s.id === selectedSurprise)?.locked ? '🔒' : '🎁'}
                 </div>
-                <h2 className="font-cursive text-4xl text-primary">
+                {/* Title - Catchy Mager */}
+                <h2 className="font-catchy text-4xl text-primary">
                   {surprises.find(s => s.id === selectedSurprise)?.title}
                 </h2>
                 <div className="bg-muted/30 rounded-2xl p-8">
-                  <p className="font-serif text-xl text-foreground leading-relaxed">
+                  {/* Content - CMU Serif */}
+                  <p className="font-cmu text-xl text-foreground leading-relaxed">
                     {surprises.find(s => s.id === selectedSurprise)?.content}
                   </p>
                 </div>
@@ -150,7 +154,7 @@ const Surprises = () => {
                   <div className="pt-4">
                     <Button
                       onClick={() => setSelectedSurprise(null)}
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-serif rounded-full px-8 shadow-[var(--shadow-romantic)]"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground font-catchy rounded-full px-8 shadow-[var(--shadow-romantic)]"
                     >
                       Close 💕
                     </Button>

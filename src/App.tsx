@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SparkleCursor } from "./components/SparkleCursor";
+import { PasswordProtect } from "./components/PasswordProtect";
 import Index from "./pages/Index";
 import Gallery from "./pages/Gallery";
 import Playlist from "./pages/Playlist";
@@ -26,9 +27,23 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route 
+            path="/gallery" 
+            element={
+              <PasswordProtect>
+                <Gallery />
+              </PasswordProtect>
+            } 
+          />
+          <Route 
+            path="/letters" 
+            element={
+              <PasswordProtect>
+                <Letters />
+              </PasswordProtect>
+            } 
+          />
           <Route path="/playlist" element={<Playlist />} />
-          <Route path="/letters" element={<Letters />} />
           <Route path="/games" element={<Games />} />
           <Route path="/wish-wall" element={<WishWall />} />
           <Route path="/timeline" element={<Timeline />} />

@@ -16,10 +16,10 @@ export default {
       // Primary fonts for the website
       sans: ['Inter', 'sans-serif'],
       
-      // Serif fonts from the image
-      seasons: ['"The Seasons"', 'serif'],      // For main titles/headers
-      cmu: ['"CMU Serif"', 'serif'],            // For body content/paragraphs
-      catchy: ['"Catchy Mager"', 'serif'],      // For special headings/accents
+      // Serif fonts - using working alternatives
+      seasons: ['"The Seasons Bold"', '"Playfair Display"', 'serif'],      // For main titles/headers
+      cmu: ['"EB Garamond"', 'serif'],                                     // For body content/paragraphs
+      catchy: ['"Cinzel Decorative"', '"Playfair Display"', 'serif'],     // For special headings/accents
       
       // Keep existing fonts for compatibility
       serif: ['Merriweather', 'serif'],

@@ -11,14 +11,75 @@ const Gallery = () => {
 
   const categories = ['All', 'Trips', 'Selfies', 'Festivals', 'Special Moments'];
 
-  // Placeholder images - to be replaced with actual photos
-  const images = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    src: `https://images.unsplash.com/photo-${1516589178581 + i * 1000}-3a259f4e78cf?w=800&auto=format&fit=crop`,
-    caption: `Beautiful Memory ${i + 1}`,
-    category: categories[Math.floor(Math.random() * (categories.length - 1)) + 1],
-  }));
+  // Import all images from photos folders
+  const importImages = () => {
+    const images: any[] = [];
+    let id = 0;
 
+    // Import from p1 folder
+    const p1Images = import.meta.glob('@/assets/photos/p1/*.(jpg|jpeg|png|gif|webp|JPG|PNG|GIF|WEBP|JPEG)', { eager: true, as: 'url' });
+    Object.entries(p1Images).forEach(([path, url]) => {
+      images.push({
+        id: id++,
+        src: url,
+        caption: `Beautiful Memory ${id}`,
+        category: 'Trips',
+        folder: 'p1'
+      });
+    });
+
+    // Import from p2 folder
+    const p2Images = import.meta.glob('@/assets/photos/p2/*.(jpg|jpeg|png|gif|webp|JPG|PNG|GIF|WEBP|JPEG)', { eager: true, as: 'url' });
+    Object.entries(p2Images).forEach(([path, url]) => {
+      images.push({
+        id: id++,
+        src: url,
+        caption: `Special Moment ${id}`,
+        category: 'Selfies',
+        folder: 'p2'
+      });
+    });
+
+    // Import from p3 folder
+    const p3Images = import.meta.glob('@/assets/photos/p3/*.(jpg|jpeg|png|gif|webp|JPG|PNG|GIF|WEBP|JPEG)', { eager: true, as: 'url' });
+    Object.entries(p3Images).forEach(([path, url]) => {
+      images.push({
+        id: id++,
+        src: url,
+        caption: `Wonderful Time ${id}`,
+        category: 'Festivals',
+        folder: 'p3'
+      });
+    });
+
+    // Import from p4 folder
+    const p4Images = import.meta.glob('@/assets/photos/p4/*.(jpg|jpeg|png|gif|webp|JPG|PNG|GIF|WEBP|JPEG)', { eager: true, as: 'url' });
+    Object.entries(p4Images).forEach(([path, url]) => {
+      images.push({
+        id: id++,
+        src: url,
+        caption: `Sweet Memory ${id}`,
+        category: 'Special Moments',
+        folder: 'p4'
+      });
+    });
+
+    // If no images found, add placeholder message
+    if (images.length === 0) {
+      return Array.from({ length: 8 }, (_, i) => ({
+        id: i,
+        src: `https://images.unsplash.com/photo-${1516589178581 + i * 1000}-3a259f4e78cf?w=800&auto=format&fit=crop`,
+        caption: `Add your photos to src/assets/photos folders`,
+        category: categories[Math.floor(Math.random() * (categories.length - 1)) + 1],
+        folder: 'placeholder'
+      }));
+    }
+
+    return images;
+  };
+
+  const images = importImages();
+  
   const filteredImages = filter === 'All' 
     ? images 
     : images.filter(img => img.category === filter);
@@ -30,10 +91,10 @@ const Gallery = () => {
       
       <main className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-slide-up">
-          <h1 className="font-cursive text-6xl md:text-7xl text-primary mb-4">
+          <h1 className="font-seasons text-6xl md:text-7xl text-primary mb-4">
             Moments in Frames 📸
           </h1>
-          <p className="font-serif text-xl text-muted-foreground">
+          <p className="font-cmu text-xl text-muted-foreground">
             Every picture tells our beautiful story
           </p>
         </div>
@@ -45,7 +106,7 @@ const Gallery = () => {
               key={category}
               onClick={() => setFilter(category)}
               variant={filter === category ? 'default' : 'outline'}
-              className={`font-serif rounded-full ${
+              className={`font-catchy rounded-full ${
                 filter === category 
                   ? 'bg-primary text-primary-foreground shadow-[var(--shadow-romantic)]' 
                   : 'hover:bg-muted'
@@ -54,6 +115,14 @@ const Gallery = () => {
               {category}
             </Button>
           ))}
+        </div>
+
+        {/* Photo Count */}
+        <div className="text-center mb-6">
+          <p className="font-cmu text-sm text-muted-foreground">
+            {filteredImages.length} {filteredImages.length === 1 ? 'photo' : 'photos'} 
+            {filter !== 'All' && ` in ${filter}`}
+          </p>
         </div>
 
         {/* Photo Grid */}
@@ -70,17 +139,28 @@ const Gallery = () => {
                   src={image.src}
                   alt={image.caption}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <p className="font-serif text-white p-4 text-lg">{image.caption}</p>
+                <p className="font-cmu text-white p-4 text-lg">{image.caption}</p>
               </div>
-              <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs px-3 py-1 rounded-full font-serif">
+              <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs px-3 py-1 rounded-full font-catchy">
                 {image.category}
               </div>
             </div>
           ))}
         </div>
+
+        {/* Empty State */}
+        {filteredImages.length === 0 && (
+          <div className="text-center py-16">
+            <p className="font-catchy text-2xl text-primary mb-4">No photos in this category yet</p>
+            <p className="font-cmu text-muted-foreground">
+              Add photos to src/assets/photos folders to see them here!
+            </p>
+          </div>
+        )}
 
         {/* Lightbox Dialog */}
         <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
@@ -96,12 +176,14 @@ const Gallery = () => {
                   <X className="h-6 w-6" />
                 </Button>
                 <img
-                  src={images[selectedImage].src}
-                  alt={images[selectedImage].caption}
-                  className="w-full h-auto rounded-2xl"
+                  src={images.find(img => img.id === selectedImage)?.src}
+                  alt={images.find(img => img.id === selectedImage)?.caption}
+                  className="w-full h-auto rounded-2xl max-h-[90vh] object-contain"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-2xl">
-                  <p className="font-cursive text-white text-2xl">{images[selectedImage].caption}</p>
+                  <p className="font-catchy text-white text-2xl">
+                    {images.find(img => img.id === selectedImage)?.caption}
+                  </p>
                 </div>
               </div>
             )}

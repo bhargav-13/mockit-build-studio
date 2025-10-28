@@ -60,10 +60,12 @@ const Letters = () => {
       
       <main className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-slide-up">
-          <h1 className="font-cursive text-6xl md:text-7xl text-primary mb-4">
+          {/* Main Title - The Seasons */}
+          <h1 className="font-seasons text-6xl md:text-7xl text-primary mb-4">
             From My Heart to Yours 💌
           </h1>
-          <p className="font-serif text-xl text-muted-foreground">
+          {/* Subtitle - CMU Serif */}
+          <p className="font-cmu text-xl text-muted-foreground">
             Words of love, sealed with affection
           </p>
         </div>
@@ -71,7 +73,7 @@ const Letters = () => {
         <div className="max-w-4xl mx-auto mb-8">
           <Button
             onClick={() => setIsAddingLetter(true)}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-serif rounded-full shadow-[var(--shadow-romantic)] gap-2"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-catchy rounded-full shadow-[var(--shadow-romantic)] gap-2"
           >
             <Plus className="h-5 w-5" />
             Write a New Letter
@@ -83,7 +85,7 @@ const Letters = () => {
           {isLoading ? (
             <div className="col-span-2 text-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-              <p className="font-serif text-muted-foreground">Loading letters...</p>
+              <p className="font-cmu text-muted-foreground">Loading letters...</p>
             </div>
           ) : (
             letters.map((letter, index) => (
@@ -100,16 +102,19 @@ const Letters = () => {
                     <Mail className="h-8 w-8" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-cursive text-2xl text-primary mb-1">
+                    {/* Letter Title - Catchy Mager */}
+                    <h3 className="font-catchy text-2xl text-primary mb-1">
                       {letter.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground font-serif">{letter.date}</p>
+                    {/* Date - CMU Serif */}
+                    <p className="text-sm text-muted-foreground font-cmu">{letter.date}</p>
                   </div>
                 </div>
-                <p className="font-serif text-muted-foreground line-clamp-3">
+                {/* Preview - CMU Serif */}
+                <p className="font-cmu text-muted-foreground line-clamp-3">
                   {letter.content}
                 </p>
-                <div className="mt-4 text-primary font-serif text-sm group-hover:underline">
+                <div className="mt-4 text-primary font-catchy text-sm group-hover:underline">
                   Click to read more →
                 </div>
               </div>
@@ -125,15 +130,18 @@ const Letters = () => {
               <div className="space-y-6">
                 <div className="text-center space-y-2">
                   <div className="text-6xl mb-4 animate-float">💌</div>
-                  <DialogTitle className="font-cursive text-4xl text-primary">
+                  {/* Letter Title - Catchy Mager */}
+                  <DialogTitle className="font-catchy text-4xl text-primary">
                     {letters.find(l => l.id === selectedLetter)?.title}
                   </DialogTitle>
-                  <p className="text-sm text-muted-foreground font-serif">
+                  {/* Date - CMU Serif */}
+                  <p className="text-sm text-muted-foreground font-cmu">
                     {letters.find(l => l.id === selectedLetter)?.date}
                   </p>
                 </div>
                 <div className="bg-muted/30 rounded-2xl p-6">
-                  <p className="font-serif text-lg text-foreground leading-relaxed whitespace-pre-wrap">
+                  {/* Content - CMU Serif */}
+                  <p className="font-cmu text-lg text-foreground leading-relaxed whitespace-pre-wrap">
                     {letters.find(l => l.id === selectedLetter)?.content}
                   </p>
                 </div>
@@ -146,41 +154,42 @@ const Letters = () => {
         <Dialog open={isAddingLetter} onOpenChange={setIsAddingLetter}>
           <DialogContent className="max-w-2xl bg-card border-2 border-primary/20">
             <DialogHeader>
-              <DialogTitle className="font-cursive text-3xl text-primary text-center">
+              {/* Dialog Title - Catchy Mager */}
+              <DialogTitle className="font-catchy text-3xl text-primary text-center">
                 Write a New Letter 💕
               </DialogTitle>
             </DialogHeader>
             <div className="space-y-4">
               <div>
-                <label className="font-serif text-sm text-foreground mb-2 block">Letter Title</label>
+                <label className="font-catchy text-sm text-foreground mb-2 block">Letter Title</label>
                 <Input
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="Give your letter a beautiful title..."
-                  className="font-serif border-primary/20"
+                  className="font-cmu border-primary/20"
                 />
               </div>
               <div>
-                <label className="font-serif text-sm text-foreground mb-2 block">Your Message</label>
+                <label className="font-catchy text-sm text-foreground mb-2 block">Your Message</label>
                 <Textarea
                   value={newContent}
                   onChange={(e) => setNewContent(e.target.value)}
                   placeholder="Pour your heart out..."
                   rows={8}
-                  className="font-serif border-primary/20"
+                  className="font-cmu border-primary/20"
                 />
               </div>
               <div className="flex gap-3 justify-end pt-4">
                 <Button
                   variant="outline"
                   onClick={() => setIsAddingLetter(false)}
-                  className="font-serif rounded-full"
+                  className="font-catchy rounded-full"
                 >
                   Cancel
                 </Button>
                 <Button
                   onClick={handleAddLetter}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-serif rounded-full shadow-[var(--shadow-romantic)]"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-catchy rounded-full shadow-[var(--shadow-romantic)]"
                 >
                   Save Letter
                 </Button>

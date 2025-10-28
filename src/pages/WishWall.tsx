@@ -58,10 +58,12 @@ const WishWall = () => {
       
       <main className="relative z-10 container mx-auto px-4 py-12">
         <div className="text-center mb-12 animate-slide-up">
-          <h1 className="font-cursive text-6xl md:text-7xl text-primary mb-4">
+          {/* Main Title - The Seasons */}
+          <h1 className="font-seasons text-6xl md:text-7xl text-primary mb-4">
             Messages for Aadi 💭
           </h1>
-          <p className="font-serif text-xl text-muted-foreground">
+          {/* Subtitle - CMU Serif */}
+          <p className="font-cmu text-xl text-muted-foreground">
             A wall of love, wishes, and beautiful thoughts
           </p>
         </div>
@@ -69,7 +71,7 @@ const WishWall = () => {
         <div className="max-w-6xl mx-auto mb-8 text-center">
           <Button
             onClick={() => setIsAddingWish(true)}
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-serif rounded-full shadow-[var(--shadow-romantic)] gap-2"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-catchy rounded-full shadow-[var(--shadow-romantic)] gap-2"
           >
             <Plus className="h-5 w-5" />
             Add Your Wish
@@ -82,7 +84,7 @@ const WishWall = () => {
             {isLoading ? (
               <div className="col-span-3 text-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                <p className="font-serif text-muted-foreground">Loading wishes...</p>
+                <p className="font-cmu text-muted-foreground">Loading wishes...</p>
               </div>
             ) : (
               wishes.map((wish, index) => (
@@ -98,10 +100,12 @@ const WishWall = () => {
                   </div>
                   
                   <div className="relative z-10">
-                    <p className="font-serif text-white text-lg mb-4 leading-relaxed min-h-[100px]">
+                    {/* Message - CMU Serif */}
+                    <p className="font-cmu text-white text-lg mb-4 leading-relaxed min-h-[100px]">
                       "{wish.message}"
                     </p>
-                    <p className="font-cursive text-white/90 text-xl">
+                    {/* Name - Catchy Mager */}
+                    <p className="font-catchy text-white/90 text-xl">
                       — {wish.name}
                     </p>
                   </div>
@@ -116,41 +120,42 @@ const WishWall = () => {
         <Dialog open={isAddingWish} onOpenChange={setIsAddingWish}>
           <DialogContent className="max-w-2xl bg-card border-2 border-primary/20">
             <DialogHeader>
-              <DialogTitle className="font-cursive text-3xl text-primary text-center">
+              {/* Dialog Title - Catchy Mager */}
+              <DialogTitle className="font-catchy text-3xl text-primary text-center">
                 Share Your Wish 💕
               </DialogTitle>
             </DialogHeader>
             <div className="space-y-4">
               <div>
-                <label className="font-serif text-sm text-foreground mb-2 block">Your Name</label>
+                <label className="font-catchy text-sm text-foreground mb-2 block">Your Name</label>
                 <Input
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
                   placeholder="How should we call you?"
-                  className="font-serif border-primary/20"
+                  className="font-cmu border-primary/20"
                 />
               </div>
               <div>
-                <label className="font-serif text-sm text-foreground mb-2 block">Your Message</label>
+                <label className="font-catchy text-sm text-foreground mb-2 block">Your Message</label>
                 <Textarea
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Write your birthday wish for Aadi..."
                   rows={6}
-                  className="font-serif border-primary/20"
+                  className="font-cmu border-primary/20"
                 />
               </div>
               <div className="flex gap-3 justify-end pt-4">
                 <Button
                   variant="outline"
                   onClick={() => setIsAddingWish(false)}
-                  className="font-serif rounded-full"
+                  className="font-catchy rounded-full"
                 >
                   Cancel
                 </Button>
                 <Button
                   onClick={handleAddWish}
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-serif rounded-full shadow-[var(--shadow-romantic)]"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-catchy rounded-full shadow-[var(--shadow-romantic)]"
                 >
                   Add to Wall
                 </Button>

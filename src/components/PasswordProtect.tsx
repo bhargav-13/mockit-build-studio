@@ -9,7 +9,7 @@ interface PasswordProtectProps {
   redirectPath?: string;
 }
 
-const PASSWORD = 'aadi1234'; // Static password - in a real app, this should be handled more securely
+const PASSWORD = '1161'; // Static password - in a real app, this should be handled more securely
 
 export const PasswordProtect = ({ children, redirectPath = '/' }: PasswordProtectProps) => {
   const [password, setPassword] = useState('');

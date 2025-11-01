@@ -27,13 +27,37 @@ export class Database {
     }
 
     try {
+      // First, load the existing bin data to preserve other keys
+      let existingData = {};
+      try {
+        const loadResponse = await fetch(`${API_BASE_URL}/${BIN_ID}/latest`, {
+          headers: {
+            'X-Master-Key': API_KEY,
+          },
+        });
+        if (loadResponse.ok) {
+          const result: DatabaseResponse = await loadResponse.json();
+          existingData = result.record || {};
+        }
+      } catch (err) {
+        // If loading fails, start with empty object
+        console.log('No existing data to merge');
+      }
+
+      // Merge the new data with existing data
+      const mergedData = {
+        ...existingData,
+        [key]: data,
+      };
+
+      // Save the merged data
       const response = await fetch(`${API_BASE_URL}/${BIN_ID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'X-Master-Key': API_KEY,
         },
-        body: JSON.stringify({ [key]: data }),
+        body: JSON.stringify(mergedData),
       });
 
       if (!response.ok) {

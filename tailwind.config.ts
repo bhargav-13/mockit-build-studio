@@ -18,7 +18,7 @@ export default {
       
       // Serif fonts - using working alternatives
       seasons: ['"The Seasons Bold"', '"Playfair Display"', 'serif'],      // For main titles/headers
-      cmu: ['"EB Garamond"', 'serif'],                                     // For body content/paragraphs
+      cmu: ['"Playfair Display"', 'serif'],                                // For body content/paragraphs
       catchy: ['"Cinzel Decorative"', '"Playfair Display"', 'serif'],     // For special headings/accents
       
       // Keep existing fonts for compatibility
@@ -152,6 +152,10 @@ export default {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -166,6 +170,7 @@ export default {
         glow: 'glow 2s ease-in-out infinite',
         'fade-in': 'fade-in 0.5s ease-out',
         'slide-up': 'slide-up 0.6s ease-out',
+        'slide-in-right': 'slide-in-right 0.3s ease-out',
       },
     },
   },

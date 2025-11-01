@@ -135,7 +135,10 @@ const Playlist = () => {
           </h1>
           {/* Subtitle - CMU Serif */}
           <p className="font-cmu text-xl text-muted-foreground">
-            The soundtrack of our love story
+          Forever written in our melody instead of our songs forever
+Our song, always. Instead of the soundtrack of our melody.
+The songs sent to you right now are original so the name of the artist should be “bibbo”
+
           </p>
         </div>
 

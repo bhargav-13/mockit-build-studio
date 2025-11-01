@@ -59,7 +59,7 @@ export const BirthdayPopup = () => {
                 Happiest 24th,
               </h1>
               <h2 className="font-seasons text-6xl md:text-8xl bg-gradient-to-r from-[hsl(var(--vibrant-purple))] to-[hsl(var(--hot-pink))] bg-clip-text text-transparent animate-title-glow">
-                Babi! 💕
+                Babi!
               </h2>
             </div>
             

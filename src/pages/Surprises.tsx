@@ -88,7 +88,7 @@ const Surprises = () => {
 
   // Confirm code and unlock
   const confirmUnlock = () => {
-    if (code.toLowerCase() === 'stuti24' && pendingUnlockId) {
+    if (code === '1161' && pendingUnlockId) {
       setSurprises(prev =>
         prev.map(s => s.id === pendingUnlockId ? { ...s, locked: false } : s)
       );
@@ -221,7 +221,7 @@ const Surprises = () => {
             </DialogHeader>
             <div className="space-y-4 py-4">
               <Input
-                placeholder="Hint: stuti24"
+                placeholder="Enter password"
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 className="font-cmu text-center bg-gray-800 border-pink-500/50 text-white placeholder:text-gray-400"

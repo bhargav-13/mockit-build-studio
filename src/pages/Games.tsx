@@ -23,18 +23,9 @@ const useGameScores = () => {
         const savedScores = await Database.load('aadi-game-scores');
         if (savedScores) {
           setScores(savedScores);
-        } else {
-          const localScores = localStorage.getItem('aadi-game-scores');
-          if (localScores) {
-            const parsed = JSON.parse(localScores);
-            setScores(parsed);
-            await Database.save('aadi-game-scores', parsed);
-          }
         }
       } catch (error) {
         console.error('Error loading scores:', error);
-        const localScores = localStorage.getItem('aadi-game-scores');
-        if (localScores) setScores(JSON.parse(localScores));
       } finally {
         setIsLoading(false);
       }
@@ -50,21 +41,34 @@ const useGameScores = () => {
     setScores(newScores);
     try {
       await Database.save('aadi-game-scores', newScores);
-      localStorage.setItem('aadi-game-scores', JSON.stringify(newScores));
     } catch (error) {
       console.error('Error saving scores:', error);
-      localStorage.setItem('aadi-game-scores', JSON.stringify(newScores));
     }
   };
 
-  return { scores, updateScore, isLoading };
+  const resetScores = async () => {
+    const resetScores = {
+      tictactoe: 0,
+      catchheart: 0,
+      memory: 0,
+      guessmoment: 0,
+      spinner: 0,
+    };
+    setScores(resetScores);
+    try {
+      await Database.save('aadi-game-scores', resetScores);
+    } catch (error) {
+      console.error('Error resetting scores:', error);
+    }
+  };
+
+  return { scores, updateScore, resetScores, isLoading };
 };
 
 // Database utility
 const Database = {
   async save(key, data) {
     try {
-      localStorage.setItem(key, JSON.stringify(data));
       const BIN_ID = '68f7d53cae596e708f2245a7';
       const API_KEY = '$2a$10$uBoTRHHfnKMolID1f4T9nOwItwnhdTto8j8OGT/wBzCnEFPXmwPl.';
       if (BIN_ID && API_KEY) {
@@ -98,8 +102,7 @@ const Database = {
     } catch (error) {
       console.warn('Cloud load failed');
     }
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : null;
+    return null;
   }
 };
 
@@ -719,8 +722,15 @@ const GuessTheMoment = ({ onClose, onScore }) => {
 
 // Main Games Component
 const Games = () => {
-  const { scores, updateScore, isLoading } = useGameScores();
+  const { scores, updateScore, resetScores, isLoading } = useGameScores();
   const [selectedGame, setSelectedGame] = useState(null);
+
+  const handleResetScores = async () => {
+    if (window.confirm('Are you sure you want to reset all game scores? This cannot be undone!')) {
+      await resetScores();
+      alert('All scores have been reset to 0!');
+    }
+  };
 
   const games = [
     {
@@ -790,9 +800,18 @@ const Games = () => {
           <h1 className="font-seasons text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-primary mb-3 md:mb-4">
             Playful Hearts 🎮
           </h1>
-          <p className="font-cmu text-lg md:text-xl text-muted-foreground">
+          <p className="font-cmu text-lg md:text-xl text-muted-foreground mb-4">
             Let's have fun together with our special games
           </p>
+          <Button
+            onClick={handleResetScores}
+            variant="outline"
+            size="sm"
+            className="gap-2 border-red-400 text-red-500 hover:bg-red-50"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Reset All Scores
+          </Button>
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">

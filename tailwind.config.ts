@@ -13,17 +13,17 @@ export default {
       },
     },
     fontFamily: {
-      // Primary fonts for the website - Lora (Flatory Serif style) as main font
-      sans: ['Lora', 'serif'],
+      // Primary fonts for the website - Flatory Serif (local font file)
+      sans: ['"Flatory Serif"', 'serif'],
 
-      // All serif fonts now use Lora (Flatory Serif style)
-      seasons: ['Lora', '"The Seasons Bold"', 'serif'],                    // For main titles/headers
-      cmu: ['Lora', 'serif'],                                              // For body content/paragraphs
-      catchy: ['Lora', '"Cinzel Decorative"', 'serif'],                    // For special headings/accents
-      flatory: ['Lora', 'serif'],                                          // Flatory Serif style
+      // All serif fonts now use Flatory Serif
+      seasons: ['"Flatory Serif"', '"The Seasons Bold"', 'serif'],         // For main titles/headers
+      cmu: ['"Flatory Serif"', 'serif'],                                   // For body content/paragraphs
+      catchy: ['"Flatory Serif"', '"Cinzel Decorative"', 'serif'],         // For special headings/accents
+      flatory: ['"Flatory Serif"', 'serif'],                               // Flatory Serif
 
       // Keep existing fonts for compatibility
-      serif: ['Lora', 'serif'],
+      serif: ['"Flatory Serif"', 'serif'],
       cookies: ['"Cookies"', 'cursive'],
       daydream: ['"Daydream"', 'cursive'],
       cakes: ['"Cakes"', 'cursive'],

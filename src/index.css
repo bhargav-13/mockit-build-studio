@@ -1,15 +1,17 @@
-/* Import Serif Fonts */
+/* ALL @import statements MUST come first before any other CSS rules */
 @import url('https://db.onlinewebfonts.com/c/f7d34c9e4c3102c89048d775c27a78f3?family=The+Seasons+Bold');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
-
-/* Flatory Serif - Main Font */
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
-
-/* CMU Serif from Google Fonts alternative - using EB Garamond */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-
-/* Catchy Mager alternative - using Cinzel Decorative */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+/* Flatory Serif - Local Font File */
+@font-face {
+  font-family: "Flatory Serif";
+  src: url("/flatory-serif-bold-semi-condensed.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;

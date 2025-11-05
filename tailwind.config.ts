@@ -13,16 +13,17 @@ export default {
       },
     },
     fontFamily: {
-      // Primary fonts for the website
-      sans: ['Inter', 'sans-serif'],
-      
-      // Serif fonts - using working alternatives
-      seasons: ['"The Seasons Bold"', '"Playfair Display"', 'serif'],      // For main titles/headers
-      cmu: ['"Playfair Display"', 'serif'],                                // For body content/paragraphs
-      catchy: ['"Cinzel Decorative"', '"Playfair Display"', 'serif'],     // For special headings/accents
-      
+      // Primary fonts for the website - Lora (Flatory Serif style) as main font
+      sans: ['Lora', 'serif'],
+
+      // All serif fonts now use Lora (Flatory Serif style)
+      seasons: ['Lora', '"The Seasons Bold"', 'serif'],                    // For main titles/headers
+      cmu: ['Lora', 'serif'],                                              // For body content/paragraphs
+      catchy: ['Lora', '"Cinzel Decorative"', 'serif'],                    // For special headings/accents
+      flatory: ['Lora', 'serif'],                                          // Flatory Serif style
+
       // Keep existing fonts for compatibility
-      serif: ['Merriweather', 'serif'],
+      serif: ['Lora', 'serif'],
       cookies: ['"Cookies"', 'cursive'],
       daydream: ['"Daydream"', 'cursive'],
       cakes: ['"Cakes"', 'cursive'],
